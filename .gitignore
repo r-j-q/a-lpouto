@@ -1,0 +1,6 @@
+.DS_Store
+unpackage/
+unpackage
+# local env files
+.hbuilderx
+.vscode 

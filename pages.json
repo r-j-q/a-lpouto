@@ -1,0 +1,558 @@
+{
+	"pages": [
+		// // #ifdef H5 
+		// {
+		// 	"path": "pages/tab/index/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Home",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// // #endif
+	 
+		// {
+		// 	"path": "pages/guide/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "",
+		// 		// #ifndef H5
+		// 		"navigationStyle": "custom",
+		// 		// #endif
+		// 		"app-plus": {
+		// 			"titleNView": false
+		// 		}
+
+		// 	}
+		// },
+		{
+			"path": "pages/tab/index/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Home",
+				"navigationBarBackgroundColor": "#191224",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		 
+
+		{
+			"path": "pages/tab/consultingService/index",
+			"style": {
+				"navigationBarTitleText": "News",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+
+
+			}
+		},
+		 
+		 
+		{
+			"path": "pages/consultingService/detail",
+			"style": {
+				"navigationBarTitleText": "New Detail",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+
+
+		{
+			"path": "pages/guide/list",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false
+				},
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/stripe/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "stripe",
+				"navigationBarBackgroundColor": "#191224",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/video/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "Video",
+				"navigationBarBackgroundColor": "#191224",
+				"navigationBarTextStyle": "white"
+			}
+		}, 
+
+
+		{
+			"path": "pages/socket/chat",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "Contact Us",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/tab/vance/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Stock Vane",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		// {
+		// 	"path": "pages/tab/weath/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Wealth Quarterly Guide",
+		// 		"navigationBarBackgroundColor": "#ffffff",
+		// 		"navigationBarTextStyle": "black"
+		// 	}
+		// },
+
+		{
+			"path": "pages/userLoginRegister/login",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/nativeDetail/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		// {
+		// 	"path": "pages/stockList",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Free Signals",
+		// 		"navigationBarBackgroundColor": "#ffffff",
+		// 		"navigationBarTextStyle": "black"
+		// 	}
+		// },
+		{
+			"path": "pages/describe/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "describe",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/message/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Message",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+
+		{
+			"path": "pages/describe/webView",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/seachPage/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white",
+				"navigationStyle": "custom"
+			}
+		},
+		 
+		{
+			"path": "pages/ploutoDetail/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Details",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/userLoginRegister/register",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "My Subscriptions",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/tab/mine/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Me",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		// {
+		// 	"path": "pages/guide/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "",
+		// 		"app-plus": {
+		// 			"titleNView": false
+		// 		},
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/tab/consultingService/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "News",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/consultingService/detail",
+		// 	"style": {
+		// 		"navigationBarTitleText": "New Detail",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+
+
+		// {
+		// 	"path": "pages/guide/list",
+		// 	"style": {
+		// 		"navigationBarTitleText": "",
+		// 		"app-plus": {
+		// 			"titleNView": false
+		// 		},
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+
+		// {
+		// 	"path": "pages/tab/index/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Signals",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// }, 
+		// {
+		// 	"path": "pages/socket/chat",
+		// 	"style": {
+		// 		"enablePullDownRefresh": true,
+		// 		"navigationBarTitleText": "Contact Us",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/tab/vance/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Stock Vane",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/tab/weath/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Wealth Quarterly Guide",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+
+		// {
+		// 	"path": "pages/userLoginRegister/login",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "",
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/nativeDetail/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/stockList",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Free Signals",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/describe/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "describe",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/message/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Message",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+
+		// {
+		// 	"path": "pages/describe/webView",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white",
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/ploutoDetail/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Details",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/userLoginRegister/register",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "",
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/mine/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "My Subscriptions",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/tab/mine/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Me",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// "app-plus": {
+		// 		"titleNView": {
+		// 			"buttons": [
+		// 				{
+		// 					"text": "\ue600",
+		// 					"fontSrc": "static/images/font_3482944_vwa5shar9o/iconfont.ttf",
+		// 					"fontSize": "18",
+		// 					 "float": "right"
+		// 				}
+		// 			]
+		// 		}
+		// 	}
+		{
+			"path": "pages/more/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "More",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white",
+				"enablePu11lDownRefresh": true,
+				"onReachBottomDistance": 50
+			}
+		},
+		{
+			"path": "pages/userLoginRegister/changePasssword",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+				// "enablePu11lDownRefresh": true,
+				// "onReachBottomDistance": 50
+			}
+		},
+		{
+			"path": "pages/threeMore/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#191428",
+				"navigationBarTextStyle": "white"
+				// "enablePu11lDownRefresh": true,
+				// "onReachBottomDistance": 50
+			}
+		}
+		 
+		 
+	],
+	"subPackages": [{
+		 
+			"root": "pages/me",
+			"pages": [{
+				"path": "myPurchase",
+				"style": {
+					"navigationBarTitleText": "My Purchase",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			},{
+				"path": "faq",
+				"style": {
+					"navigationBarTitleText": "FAQ",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			},{
+				"path": "privacyPolicy",
+				"style": {
+					"navigationBarTitleText": "Privacy Policy",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			},{
+				"path": "settin",
+				"style": {
+					"navigationBarTitleText": "Settings",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			},{
+				"path": "suggest",
+				"style": {
+					"navigationBarTitleText": "Feedback",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			},{
+				"path": "termsOfService",
+				"style": {
+					"navigationBarTitleText": "Acceptance of Terms",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			},{
+				"path": "contactUs",
+				"style": {
+					"navigationBarTitleText": "Contact Us",
+					"enablePullDownRefresh": false,
+					"navigationBarBackgroundColor": "#191428",
+					"navigationBarTextStyle": "white"
+				}
+			}
+			 ] 
+			}], 
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Plouto",
+		"navigationBarBackgroundColor": "#191428",
+		"backgroundColor": "#F5F5F5",
+		"onReachBottomDistance": 10,
+		"rpxCalcMaxDeviceWidth": 1024,
+		"rpxCalcBaseDeviceWidth": 375,
+		"rpxCalcIncludeWidth": 750
+	},
+
+
+	"tabBar": {
+		"color": "#7b7888",
+		"selectedColor": "#4ca594",
+		"backgroundColor": "#191428",
+		"borderStyle": "#7b7888",
+		"list": [
+			 
+			{
+				"pagePath": "pages/tab/index/index",
+				"text": "Home",
+				"iconPath": "static/images/signals.png",
+				"selectedIconPath": "static/images/signalsActive.png"
+			},
+			{
+				"pagePath": "pages/tab/consultingService/index",
+				"text": "News",
+				"iconPath": "static/images/news_hot.png",
+				"selectedIconPath": "static/images/news_hot_active.png"
+			},
+			{
+				"pagePath": "pages/video/index",
+				"text": "Video",
+				"iconPath": "static/images/stockVane.png",
+				"selectedIconPath": "static/images/stockVaneActive.png"
+			}, 
+			 
+			{
+				"pagePath": "pages/tab/mine/index",
+				"text": "Me",
+				"iconPath": "static/images/my.png",
+				"selectedIconPath": "static/images/my-active.png"
+			}
+
+		]
+	},
+	"app-plus": {
+		"softinputMode": "adjustResize"
+	},
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"condition": {
+		"current": 0,
+		"list": [{
+			"name": "",
+			"path": "",
+			"query": ""
+		}]
+	}
+} 
