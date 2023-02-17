@@ -39,7 +39,11 @@
 			<view class="textColorff color1296db fontSize30 fontWeight">
 				{{titleList.symbol}}
 			</view>
-			<u-icon @click="addLike(titleList)" name="heart-fill" :color="isLike?'#e4393c':'#999'" size="38"></u-icon>
+			<view class=" disRowcCenter textColorFFF" @click="addLike(titleList)">
+				+Add Stock
+				<u-icon name="heart-fill" :color="isLike?'#e4393c':'#999'" size="38"></u-icon>
+			</view>
+			 
 		</view>
 		<view class="textColor5a fontSize24 disRowAroundcenter">
 			<view class="">

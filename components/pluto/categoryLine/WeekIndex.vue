@@ -515,6 +515,11 @@
 							splitLine: {
 								show: false
 							},
+							axisLabel:{
+								textStyle: {
+									color: '#999'
+								},
+							},
 							// axisLine: {
 							//        onZero: false,
 							//        lineStyle: {
@@ -552,6 +557,11 @@
 							scale: true,
 							splitArea: {
 								show: true
+							},
+							axisLabel:{
+								textStyle: {
+									color: '#999'
+								},
 							},
 							// axisLine: {
 							//        onZero: false,

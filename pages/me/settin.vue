@@ -98,7 +98,8 @@
 				let _this=this;
 				if(v==1){
 					 if(_this.userInfo?.token ){
-					this.LoginOutShow = true; 
+					   this.LoginOutShow = true; 
+					   uni.removeStorageSync('userInfo')
 					 }else{
 					 	uni.showToast({
 							icon:'none',

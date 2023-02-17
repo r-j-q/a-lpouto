@@ -1,23 +1,19 @@
 {
   "id": "wrap-version-update",
   "displayName": "【WrapUpdate】APP版本更新、支持wgt热更新、测试版本、跳转appStore等所有方式，提供后台管理支持版本控制",
-  "version": "2.0.3",
+  "version": "3.1.1",
   "description": "一行代码实现APP版本更新，更提供后台管理让版本的发布和迭代再也不用愁了，支持APP版本更新、支持wgt热更新、测试版本、跳转appStore、跳转浏览器下载等所有方式",
   "keywords": [
-    "版本",
-    "更新",
     "版本更新",
     "热更新",
-    "wgt"
+    "wgt",
+    "update",
+    "upgrade"
 ],
   "engines": {
     "HBuilderX": "^3.1.0"
   },
-  "dcloudext": {
-    "category": [
-        "前端组件",
-        "通用组件"
-    ],
+"dcloudext": {
     "sale": {
       "regular": {
         "price": "0.00"
@@ -34,7 +30,8 @@
       "data": "无",
       "permissions": "无"
     },
-    "npmurl": ""
+    "npmurl": "",
+    "type": "component-vue"
   },
   "uni_modules": {
     "dependencies": [],

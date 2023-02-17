@@ -390,9 +390,14 @@
 					legend: {
 						show: false
 					},
-					dataZoom: [{
+					dataZoom: [
+					 
+						{
+							filterMode:'filter', //当前数据窗口外的数据被过滤掉来达到数据窗口缩放的效果 默认值filter
+							   type: 'inside', 
 							show: true,
 							realtime: true,
+							   // zoomLock: true,
 							start: 30,
 							end: 70,
 							xAxisIndex: [0, 1]
@@ -403,7 +408,8 @@
 							start: 30,
 							end: 70,
 							xAxisIndex: [0, 1]
-						}
+						},
+						
 					],
 					tooltip: {
 						position: [0, 20],
@@ -486,14 +492,17 @@
 						bottom: '26%'
 					},
 					xAxis: {
+						
 						type: 'category',
 						data: data.timeData,
 						scale: true,
 						axisLine: {
 							onZero: false,
+							show:false,
 							lineStyle: {
-								color: '#ffffff61'
-							}
+								color: '#999'
+							},
+							// X横坐标颜色
 						},
 						splitLine: {
 							show: false
@@ -502,8 +511,9 @@
 						splitNumber: 3,
 						axisLabel: {
 							textStyle: {
-								color: '#333'
+								color: '#999'
 							},
+							// X轴颜色 时间
 
 							formatter: function(value) {
 
@@ -523,11 +533,15 @@
 							max:curMax,
 							interval:(curMax-curMin)/5,*/
 							z: 3,
+							 
+						 
 							axisLabel: {
+								show:true,
 								inside: true,
 								textStyle: {
-									color: '#333'
+									color: '#999'
 								},
+								// Y轴颜色 
 								formatter: function(value) {
 									return value?.toFixed(2)
 								}
@@ -545,6 +559,7 @@
 									color: '#E3E3E3'
 								}
 							},
+							 
 							splitArea: {
 								show: false
 							}

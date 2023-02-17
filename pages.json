@@ -68,15 +68,15 @@
 				"navigationStyle": "custom"
 			}
 		},
-		{
-			"path": "pages/stripe/index",
-			"style": {
-				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "stripe",
-				"navigationBarBackgroundColor": "#191224",
-				"navigationBarTextStyle": "white"
-			}
-		},
+		// {
+		// 	"path": "pages/stripe/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": true,
+		// 		"navigationBarTitleText": "stripe",
+		// 		"navigationBarBackgroundColor": "#191224",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
 		{
 			"path": "pages/video/index",
 			"style": {
@@ -88,24 +88,24 @@
 		}, 
 
 
-		{
-			"path": "pages/socket/chat",
-			"style": {
-				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "Contact Us",
-				"navigationBarBackgroundColor": "#191428",
-				"navigationBarTextStyle": "white"
-			}
-		},
-		{
-			"path": "pages/tab/vance/index",
-			"style": {
-				"enablePullDownRefresh": false,
-				"navigationBarTitleText": "Stock Vane",
-				"navigationBarBackgroundColor": "#191428",
-				"navigationBarTextStyle": "white"
-			}
-		},
+		// {
+		// 	"path": "pages/socket/chat",
+		// 	"style": {
+		// 		"enablePullDownRefresh": true,
+		// 		"navigationBarTitleText": "Contact Us",
+		// 		"navigationBarBackgroundColor": "#191428",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/tab/vance/index",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "Stock Vane",
+		// 		"navigationBarBackgroundColor": "#191428",
+		// 		"navigationBarTextStyle": "white"
+		// 	}
+		// },
 		// {
 		// 	"path": "pages/tab/weath/index",
 		// 	"style": {

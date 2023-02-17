@@ -3,7 +3,7 @@
 		<view class="  fontSize24 rowBetween paddingAll">
 			<view class="phcolor fontSize15 rowBetween " style="width:100%" >
 				<view class="">
-					CompanyName
+					Company Name
 				</view>
 				<view class="phcolor">
 					{{titleList.name}}
@@ -90,7 +90,7 @@
 		<view class="textColor5a fontSize24 rowBetween paddingAll">
 			<view class="phcolor fontSize15 rowBetween mrr" style="flex:1">
 				<view class="">
-					Today’s Open
+					Open
 				</view>
 				<view class="">
 					{{titleList.open.toFixed(2)}}

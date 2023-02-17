@@ -59,11 +59,13 @@
 
 		</view>
 		<!-- :bgImage="upd" -->
+	 <!-- 386994742353989  1631471618-->
 	 
-	<!-- 	<wrap-version-update ref="updateRef" :bgImage="upd" id="63842461daf2ed000150d7e7" @check="onHandleCheck"
+         
+        <wrap-version-update ref="updateRef" :bgImage="upd" id="386994742353989" @check="onHandleCheck"
 			@error="onHandleError" @finish="onHandleFinish">
-		</wrap-version-update> -->
-	 
+		</wrap-version-update>
+	  
 		<!-- <button type="default">{{release.version}}</button> -->
 
 		<!-- <view class="brand">
@@ -209,7 +211,6 @@
 		</view> -->
 
 
-
 </template>
 
 <script>
@@ -251,7 +252,7 @@
 		data() {
 			return {
 				marhetList2:[
-					  'Markets',  '+Add Stock'
+					  'Markets',  'Watchlist'
 						 
 				 
 				],

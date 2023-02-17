@@ -6,45 +6,49 @@
 >
 > 3.支持配置非强制更新，暴露绝大部分参数自定义性强
 >
-> 4.封装了大部分js方法，让向完全自定义界面的开发者更加编辑
+> 4.封装了大部分js方法，让向完全自定义界面的开发者更加便捷
+>
+> 5.提供后台管理[WrapAppStore](https://apps.seepine.com/)，轻松完成版本更新
+>
+> 5.提供发布页，效果可查看[Telegram发布页](https://apps.seepine.com/app/375348123164741)
 
-- 使用**wrap-version-update** 大于`2.0.0`版本的组件，请到新管理后台将所有app有提示需要保存的版本重新编辑保存一次，避免出现问题；
+- 由于uniCloud收费，服务器做了迁移，请插件版本低于`3.0.0`的尽快升级！！！；
 
-- WrapStore官方QQ群：855298680，有问题请加群讨论，避免应用发布后无法控制版本更新造成损失；
+- WrapAppStore官方QQ群：855298680，有问题请加群讨论，避免应用发布后无法控制版本更新造成损失；
 
 
 ## 一、后台管理添加应用
 
 ### 1.登录网址
 
-[点我前往WrapStore后台管理](https://apps.seepine.com/)，后台使用uniCloud搭建，24小时运行无需担心服务器过期等问题，稳定提供版本更新服务。后续会开发类似IOS的AppStore应用，展示WrapStore上大家的app，为大家推广app及提供用户评论等功能。
+[点我前往WrapAppStore后台管理](https://apps.seepine.com/)，后台提供版本更新服务，扫码登录即可。
 
 ### 2.创建应用
 
-![](https://s2.loli.net/2021/12/26/IxRw4yi5rf8pAuc.png)
+![](https://s1.ax1x.com/2023/01/08/pSZG43T.png)
 
 ### 3.添加版本
 
 创建完应用后，点击菜单栏的版本管理，点击添加版本即可。其中HBuilderX是否更新和是否强制更新底部皆有解释，若还不明白的可添加QQ群讨论咨询。
 
-![](https://s2.loli.net/2021/12/26/NF716rPxvIhLZKD.png)
+![](https://s1.ax1x.com/2023/01/08/pSZGTu4.png)
 
 ### 4.设置正式版
 
-在添加的版本右边菜单栏，选择设为正式版/设为测试版即可。
+在添加的版本菜单栏，选择设为正式版即可。
 
 ## 二、使用
 
 ### 1.获取应用id
 
-![](https://s2.loli.net/2021/12/26/OyGh7wiAfHWERTv.png)
+![](https://s1.ax1x.com/2023/01/08/pSZGHb9.png)
 
 ### 2.引入组件，修改id值
 
 在首页引入组件，id**记得**替换为上一步获取到的
 
 ```
-<wrap-version-update id="60abb4b4f6a398000176547a" @check="handleCheck" @error="handleError"
+<wrap-version-update id="372917185699909" @check="handleCheck" @error="handleError"
 			@finish="handleFinish">
 </wrap-version-update>
 ```
@@ -60,8 +64,9 @@
 | 参数         | 说明                                                         | 类型    | 默认                                                         |
 | ------------ | ------------------------------------------------------------ | ------- | ------------------------------------------------------------ |
 | id           | 应用appId                                                    | String  |                                                              |
+| uniqueId | 唯一id，例如用户id等，可在后台查看到此值，统计某用户打开了多少次app | String | |
 | auto | 是否自动检查新版本，若设为false，需要主动调用$refs.ref.check()去检查版本，适用于当开启了不强制更新，在设置->关于中可以提供让用户主动去检查更新的入口 | Boolean | true |
-| apiUrl       | 请求版本更新接口                                             | String  | https://ed2bb32b-5553-4785-9bec-047aef8f37f3.bspapp.com/check |
+| apiUrl       | 请求版本更新接口                                             | String  | https://appsapi.seepine.com/v1/check |
 | loading      | 是否显示检查接口加载                                         | Boolean | true                                                         |
 | loadingText  | 加载文字                                                     | String  | 检查更新中                                                   |
 | loadingMask  | 加载弹窗mask，为true则不可通过返回键取消动画                 | Boolean | true                                                         |
@@ -79,11 +84,16 @@
 
 
 
+
+
 ## 四、体验
 
 ### 1.下载demo查看效果
 
-[demo_1.0.0.apk](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-ed2bb32b-5553-4785-9bec-047aef8f37f3/45341503-44e9-4a4f-859d-415ea160c727.apk)：打开后会提示有新版3.0.0，升级使用热更新的方式。
-![](https://s2.loli.net/2021/12/26/vSQtazIDFAGYB5n.png)
-[demo_2.0.0.apk](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-ed2bb32b-5553-4785-9bec-047aef8f37f3/f4325c07-6b30-4b60-b6f5-9fa8dbc7b1c7.apk)：运行后会提示是测试版，无需更新。
-![](https://s2.loli.net/2021/12/26/iE4rbWxBl8C3cHS.png)
+打开后会提示有新版，升级使用热更新的方式。
+
+- 直接下载apk：[点击demo_1.0.0.apk](https://mp-a23a1d70-8513-408a-adf5-73446ccd4d97.cdn.bspapp.com/cloudstorage/198c49ee-7d80-4567-a772-d93cc0c5d52d.apk)
+- 前往工具站生成apk地址二维码，手机扫码下载
+  - 工具站：[草料文本二维码生成器 (cli.im)](https://cli.im/text)
+  - apk地址：https://mp-a23a1d70-8513-408a-adf5-73446ccd4d97.cdn.bspapp.com/cloudstorage/198c49ee-7d80-4567-a772-d93cc0c5d52d.apk
+

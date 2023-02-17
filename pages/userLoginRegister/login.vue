@@ -30,11 +30,11 @@
 	</view> -->
 			<view class="loginButtom textColorFFF"  @click="handleOnLogin">
 				<button   :disabled="disabled" size="large"
-					class="content_app11 textColor19 weight color0c50d6 textColorFFF paddingAll">Login In</button>
+					class="content_app11 textColor19 weight color0c50d6 textColorFFF paddingAll">Login</button>
 			</view>
 			<view class="loginAccount textColorff fontSize15">
 				<text class="textColor9e mrr">Don't have an account </text>
-				<text class="color94" @click="registerTo">Signup here </text>
+				<text class="color94" @click="registerTo">Register account </text>
 				 
 				
 			</view>

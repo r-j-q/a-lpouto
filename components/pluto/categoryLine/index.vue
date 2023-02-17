@@ -376,7 +376,7 @@
 						borderColor: '#ccc',
 						padding: 10,
 						textStyle: {
-							color: '#000'
+							color: '#999'
 						},
 						position: function(pos, params, el, elRect, size) {
 							const obj = {
@@ -455,6 +455,18 @@
 							 //          color:  "#f5f5f5",//X轴坐标线颜色
 							 //        }
 							 //      },
+							 axisLabel: {
+							 	textStyle: {
+							 		color: '#999'
+							 	},
+							 	// X轴颜色 时间
+							 
+							 // 	formatter: function(value) {
+							 
+							 // 		return value;
+							 
+							 // 	}
+							 },
 							min: 'dataMin',
 							max: 'dataMax',
 							axisPointer: {
@@ -493,6 +505,18 @@
 							//          color:  "#f5f5f5",//X轴坐标线颜色
 							//        }
 							//      },
+							axisLabel: {
+								textStyle: {
+									color: '#999'
+								},
+								// X轴颜色 时间
+							
+							// 	formatter: function(value) {
+							
+							// 		return value;
+							
+							// 	}
+							},
 						},
 						{
 							scale: true,

@@ -41,7 +41,7 @@
 					</div>
 				</div>
 
-				<div class="bottomMask" v-if="playIndex!=idx||timeMask"></div>
+				<!-- <div class="bottomMask" v-if="playIndex!=idx||timeMask"></div> -->
 
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-	const videoBoxHeight = 380 //视频盒子高度
+	const videoBoxHeight = 290 //视频盒子高度
 
 	//#ifdef APP-PLUS
 	import chunleiVideo from '@/components/chunlei-video/chunlei-video';
@@ -68,7 +68,7 @@
 				playTop: 200, //播放高度
 
 
-				index: 1, //当前视频展示索引
+				index: 0, //当前视频展示索引
 				timerDeb: null,
 				timerThr: null,
 				playIndex: -1,
@@ -83,7 +83,7 @@
 						avatar: 'https://stock-plouto.com/sVideo/img1.png',
 						initialTime: 0,
 						at: '',
-						duration: 511,
+						duration: 841,
 					},
 					{
 						src: 'https://stock-plouto.com/sVideo/work2/work2.m3u8',
@@ -94,7 +94,7 @@
 						avatar: 'https://stock-plouto.com/sVideo/img2.png',
 						initialTime: 0,
 						at: '',
-						duration: 700
+						duration: 900
 					},
 					{
 						src: 'https://stock-plouto.com/sVideo/work3/work3.m3u8',
@@ -160,7 +160,7 @@
 		},
 		methods: {
 			pushVideoList() {
-				this.videoList = this.videoList 
+				this.videoList = [...this.videoList]
 				// let promise = new Promise((resolve, reject) => {
 				// 	uni.request({
 				// 		url: 'https://api.apiopen.top/videoRecommend?id=127300',
@@ -218,7 +218,7 @@
 				handler: async function(newVal) {
 					this.throttle(() => {
 						if (this.videoList.length - newVal - 1 < this.listNumber) {
-							this.pushVideoList()
+							// this.pushVideoList()
 						}
 					}, 200)()
 				}

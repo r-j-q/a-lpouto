@@ -1,5 +1,5 @@
 <template>
-  <wrap-popup class="s_position" :show="show" direction="center" :mask-close="release.isForceUpdate">
+  <wrap-popup :show="show" direction="center" :mask-close="release.isForceUpdate">
     <view class="view box-size">
       <image :src="bgImage ? bgImage : defaultBgImg" class="box-size absolute"></image>
       <view class="view box-size absolute desc line-4"><wrap-text :color="textColor" :text="release.description" :lines="lines"></wrap-text></view>
@@ -55,7 +55,11 @@ export default {
     // 接口地址
     apiUrl: {
       type: String,
-      default: 'https://ed2bb32b-5553-4785-9bec-047aef8f37f3.bspapp.com/check'
+      default: 'https://appsapi.seepine.com/v1/check'
+    },
+    pageUrl: {
+      type: String,
+      default: 'https://apps.seepine.com/app'
     },
     // 加载配置，分别是：是否显示加载、加载文字、是否mask、延迟出现时间
     loading: {
@@ -64,7 +68,7 @@ export default {
     },
     loadingText: {
       type: String,
-      default: 'update'
+      default: '检查更新中'
     },
     loadingMask: {
       type: Boolean,
@@ -99,7 +103,7 @@ export default {
     },
     secondaryBtnText: {
       type: String,
-      default: 'talk later'
+      default: '以后再说'
     },
     secondaryBtnTextColor: {
       type: String,
@@ -116,6 +120,9 @@ export default {
     auto: {
       type: Boolean,
       default: true
+    },
+    uniqueId: {
+      type: String
     }
   },
   components: {
@@ -127,7 +134,7 @@ export default {
       init: false,
       release: {
         needUpdate: true,
-        forceUpdate: true,
+        isHBuilderUpdate: false,
         isForceUpdate: true,
         version: '0.1.0',
         description: '',
@@ -136,7 +143,7 @@ export default {
       },
       btnVisible: true,
 
-      btnText: 'Upgrade Now',
+      btnText: '立即升级',
 
       percent: 0,
       tempPath: '',
@@ -153,6 +160,7 @@ export default {
       return {
         id: this.id,
         apiUrl: this.apiUrl,
+        uniqueId: this.uniqueId,
         loading: this.loading,
         loadingText: this.loadingText,
         loadingMask: this.loadingMask,
@@ -163,13 +171,13 @@ export default {
       if (!this.release.needUpdate) {
         return undefined;
       }
-      if (!this.release.isHbuildUpdate && this.release.wgtUrl !== '') {
+      if (!this.release.isHBuilderUpdate) {
         return this.release.wgtUrl;
       }
       return this.release.pkgUrl;
     },
     isHot: function() {
-      return !this.release.isHbuildUpdate && this.release.wgtUrl !== '';
+      return !this.release.isHBuilderUpdate;
     }
   },
   created() {
@@ -179,21 +187,23 @@ export default {
         icon: 'none',
         duration: 4000
       });
-      console.error('重要！必改！应用id必传，从WrapStore后台获取，后台地址：https://apps.seepine.com/');
+      console.error('重要！必改！应用id必传，从WrapAppStore后台获取，后台地址：https://apps.seepine.com/');
       return;
     }
     if (this.auto) {
       this.init = true;
     }
-    this.check();
+    uni.getSystemInfo({
+      success: info => {
+        this.sysInfo = info;
+        this.nowVersion = this.sysInfo.appWgtVersion || this.sysInfo.appVersion;
+        this.check();
+      }
+    });
   },
   methods: {
     check() {
-      getVersion()
-        .then(version => {
-          this.nowVersion = version;
-          return checkUpdate(this.version ? this.version : version, this.config);
-        })
+      checkUpdate(this.version || this.nowVersion, this.sysInfo, this.config)
         .then(res => {
           this.release = res;
           this.$emit('check', res);
@@ -203,11 +213,7 @@ export default {
             }
           } else {
             if (res.isTest) {
-              uni.showToast({
-                title: '测试版' + (this.version ? this.version : this.nowVersion),
-                icon: 'none',
-                position: 'bottom'
-              });
+              console.log('测试版' + (this.version || this.nowVersion));
             }
             this.$emit('finish', res);
           }
@@ -225,8 +231,16 @@ export default {
         });
     },
     handleUpdate() {
+      if (this.sysInfo.uniPlatform === 'web' || this.sysInfo.uniPlatform === 'h5') {
+        uni.showToast({
+          icon: 'none',
+          title: '非app无法安装'
+        });
+        this.btnVisible = true;
+        return;
+      }
       // 如果是ios并且非热更新
-      if (uni.getSystemInfoSync().platform === 'ios' && !this.isHot) {
+      if (this.sysInfo.platform === 'ios' && !this.isHot) {
         if (this.release.appleId) {
           plus.runtime.launchApplication(
             {
@@ -268,11 +282,12 @@ export default {
           success: filePath => {
             this.percent = 100;
             this.tempPath = filePath;
-            this.btnText = 'upgrade now';
+            this.btnText = '马上安装';
             this.openFile();
           },
           fail: e => {
             console.error('下载文件', e);
+            this.installFail();
             this.btnVisible = true;
           },
           progress: progress => {
@@ -287,7 +302,7 @@ export default {
         this.installFlag = true;
         uni.showToast({
           icon: 'none',
-          title: this.isHot ? 'upgrade' : 'upgrade'
+          title: this.isHot ? '正在安装中' : '正在打开安装程序'
         });
         if (this.isHot) {
           //热更新
@@ -336,8 +351,8 @@ export default {
         confirmText: '立刻前往',
         success: res => {
           if (res.confirm) {
-            plus.runtime.openURL(`https://ed2bb32b-5553-4785-9bec-047aef8f37f3.bspapp.com/http/app?id=${this.id}`, () => {
-              // this.openUrlFail();
+            plus.runtime.openURL(this.pageUrl + `/${this.id}`, () => {
+              this.openUrlFail();
             });
           }
         }
@@ -350,7 +365,7 @@ export default {
         success: res => {
           if (res.confirm) {
             uni.setClipboardData({
-              data: `https://ed2bb32b-5553-4785-9bec-047aef8f37f3.bspapp.com/http/app?id=${this.id}`,
+              data: this.pageUrl + `/${this.id}`,
               success: () => {}
             });
           }
@@ -362,10 +377,7 @@ export default {
 </script>
 <style scoped>
 @import '../../css/index.scss';
-.s_position{
-	position: relative;
-	z-index: 999;
-}
+
 .box-size {
   width: 491rpx;
   height: 653rpx;
