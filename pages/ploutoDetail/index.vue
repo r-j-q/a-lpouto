@@ -6,7 +6,9 @@
 		<view style="height: 5px;"></view>
 		<echartsT v-if="minHour==0" :option="option" style="height: 300px;" @click="echartsClick"></echartsT>
 		<CategoryLine v-if="minHour==1" :stock_no="stock_no" :qUrl="qUrl" />
-		<WeekIndex v-if="minHour==2" :stock_no="stock_no" :qUrl="qUrl" />
+		<WeekIndex v-if="minHour==2" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
+		<WeekIndex v-if="minHour==3" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
+		<WeekIndex v-if="minHour==4" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
 		<detail :titleList="titleList" />
 		<view class="paddingAll textColor" v-if="content" style="text-justify:newspaper;">
 			{{content}}
@@ -45,7 +47,7 @@
 		},
 		data() {
 			return {
-
+             time_type:'1m',//1month  1year
 				isLike: false, //是否添加自选股
 				minHour: 0,
 				content: "",
@@ -62,20 +64,22 @@
 					previousClose:0
 				},
 				option: {},
-				stock_no: "1min",
+				stock_no: "1m",
 				current: 0,
-				time_type: "1min",
+				time_type_week: "1week",
 				tabs: [
-					'1min',
-					'5min',
-					'15min',
-					'30min',
-					'1hour',
-					'4hour',
-					'Day',
-					'Week'
+					'1m',
+					'5m',
+					'15m',
+					'30m',
+					'1h',
+					'4h',
+					'D',
+					// 'W',
+					// 'M',
+					// 'Y',
 				],
-				tabText: "Day",
+				tabText: "D",
 				qUrl: ""
 			};
 		},
@@ -183,20 +187,64 @@
 			},
 
 			changeTab(index) {
-				if (self.tabs[index] == "Day" || self.tabs[index] == "Week") {
-
-					if (self.tabs[index] == "Day") {
-						self.minHour = 1
-					} else if (self.tabs[index] == "Week") {
-						self.minHour = 2
-						self.qUrl = noauthStockWeek
+				console.log("=======>",index)
+				if(index <= 5){
+					self.minHour = 0;
+					if(index==4 || index ==5){
+						self.time_type=self.tabs[index]+"our";
+					}else{
+						self.time_type=self.tabs[index]+"in";
 					}
-
-				} else {
-					self.minHour = 0
-					self.time_type = self.tabs[index]
+					 
+					
+					// self.time_type = self.tabs[index]
 					self.getStockBaseList()
+				}else if(index == 6){
+					self.minHour = 1
+				}else if(index>6){
+					   
+					if(self.tabs[index] == "M"){
+						self.time_type_week='1month'
+						self.minHour = 3
+						self.qUrl = noauthStockWeek
+					}else if(self.tabs[index] == "Y"){
+						self.time_type_week='1year'
+						self.minHour = 4
+						self.qUrl = noauthStockWeek
+					} else if(self.tabs[index] == "W"){
+					self.time_type_week='1week'
+					self.minHour = 2
+					self.qUrl = noauthStockWeek
+					}
+					 
+					
+					
+					 
 				}
+				 
+				// if (self.tabs[index] == "D" || self.tabs[index] == "H" ||self.tabs[index] == "W" || self.tabs[index] == "M" || self.tabs[index] == "Y") {
+
+				// 	if (self.tabs[index] == "D") {
+				// 		self.minHour = 1
+				// 	} else if (self.tabs[index] == "W" || self.tabs[index] == "M" || self.tabs[index] == "Y") {
+				// 		self.time_type_week='1week'
+				// 		if(self.tabs[index] == "M"){
+				// 			self.time_type_week='1month'
+				// 		}else if(self.tabs[index] == "Y"){
+				// 			self.time_type_week='1year'
+				// 		}
+						 
+						
+						
+				// 		self.minHour = 2
+				// 		self.qUrl = noauthStockWeek
+				// 	}
+
+				// } else {
+				// 	self.minHour = 0
+				// 	self.time_type = self.tabs[index]
+				// 	self.getStockBaseList()
+				// }
 
 			},
 			load() {
@@ -262,7 +310,7 @@
 			getStockBaseList() {
 
 				var res = self.$request.get({
-						url: `${stockBase}?stock_no=${self.stock_no}&time_type=${self.time_type}`,
+						url: `${stockBase}?stock_no=${self.stock_no}&time_type=${self.time_type =='1m'? '1min' :self.time_type }`,
 						loadingTip: 'stock...'
 					})
 					.then(
@@ -398,15 +446,15 @@
 							show: true,
 							realtime: true,
 							   // zoomLock: true,
-							start: 30,
-							end: 70,
+							start: 70,
+							end: 100,
 							xAxisIndex: [0, 1]
 						},
 						{
 							type: 'inside',
 							realtime: true,
-							start: 30,
-							end: 70,
+							start: 70,
+							end: 100,
 							xAxisIndex: [0, 1]
 						},
 						
@@ -603,7 +651,7 @@
 					series: [{
 							name: 'Current price ',
 							type: 'line',
-							data: data.curData,
+							data: data.curData.reverse(),
 							smooth: true,
 							yAxisIndex: 0,
 							symbol: 'circle',
@@ -623,11 +671,11 @@
 							areaStyle: {
 								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
 										offset: 0,
-										color: 'rgb(255, 158, 68)'
+										color: 'rgba(62, 173, 93, 0.5)'
 									},
 									{
 										offset: 1,
-										color: 'rgb(255, 70, 131)'
+										color: 'rgb(18, 184, 135)'
 									}
 								])
 							},

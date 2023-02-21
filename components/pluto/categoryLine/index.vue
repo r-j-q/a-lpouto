@@ -1,8 +1,8 @@
 <template>
 	<view class="container">
-		<view class="container_week fontSize13 textColorffb860">
-	<span class="mrr">{{subTitle}}:</span><span> {{subTextContent}}</span>  
-		</view>
+		<!-- <view class="container_week fontSize13 textColorffb860">
+	     <span class="mrr">{{subTitle}}</span><span> {{subTextContent}}</span>  
+		</view> -->
 		<echarts :option="option" style="height: 355px;width: 750upx;" @click="echartsClick"></echarts>
 	</view>
 </template>

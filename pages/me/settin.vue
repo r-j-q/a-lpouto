@@ -31,7 +31,8 @@
 
 <script>
 	import {
-		mapGetters
+		mapGetters,
+		mapActions
 	} from "vuex";
 	import {
 		userLogoff
@@ -47,6 +48,10 @@
 			...mapGetters(["userInfo"]),
 		},
 		methods: {
+			...mapActions({
+				setUserInfo: "setUserInfo"
+			}),
+			
 			cancelOut(){
 				this.LoginOutShow = false;
 			},
@@ -99,6 +104,7 @@
 				if(v==1){
 					 if(_this.userInfo?.token ){
 					   this.LoginOutShow = true; 
+					   	_this.setUserInfo({})
 					   uni.removeStorageSync('userInfo')
 					 }else{
 					 	uni.showToast({

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<suggest @submit="submit"></suggest>
+		<suggest @submit="submit" :isDisabled="isDisabled"></suggest>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 
@@ -16,6 +16,11 @@
 		components: {
 			suggest
 		},
+		data(){
+			return{
+				isDisabled:false
+			}
+		},
 		methods: {
 			submit(v) {
 				let _this = this;
@@ -26,6 +31,7 @@
 					return
 				}
 				 
+				 _this.isDisabled=true
 				_this.$request
 					.post({
 						url: usersFeedbackAdd, 
@@ -38,6 +44,7 @@
 					 })
 					.then(
                      res => {
+						 _this.isDisabled=false
 						_this.$refs.uToast.show({
 							title: 'Submitted successfully',
 							callback() {

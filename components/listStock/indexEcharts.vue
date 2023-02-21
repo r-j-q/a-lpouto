@@ -1,18 +1,19 @@
 <template>
 	<view class="tabTop">
 		<scroll-view scroll-x="true"   :scroll-with-animation="true">
-			<view class="box"   >
+			<view class="box"   > 
 				<view class="tabTopItem" v-for="(item,index) in tabTopList" :key="index"
 					:class="{'ac':tabTopCurrent == index}" @click="jumpToDescribe(item)">
 					<view class="content_list_">
 						<view class="content_list_1">
-							<view class="fontSize10  t_a_c textColorFFF">{{item.symbol}} </view>
+							<!-- <view class="fontSize10  t_a_c textColorFFF">{{item.name}} </view> -->
+							<view class="  t_a_c textColorFFF">{{item.symbol}} </view>
 							 <view class="dis_row_l">
 							  <view class="dis_row_1">
-							  	<view class="fontSize14 fontWeight list_s_t"> {{item.price}}</view>
+							  	<view class="fontSize14  list_s_t"> {{item.price}}</view>
 							  	<view class="list_s" :class="item.p_f=='+'?'textColorffb860':'textColor0c50d6'">
-							  		<view class="fontSize12 mrr" :class="Number( item.p_h)>0?'color94':'color43'">{{item.p_f=='+'?'+':''}} {{item.p_r}} </view>
-							  		<view class="fontSize12" :class="Number( item.p_h)>0?'color94':'color43'"> {{item.p_f=='+'?'+':''}}{{ item.p_h}}% </view>
+							  		<view class="" :class="Number( item.p_h)>0?'color94':'color43'">{{item.p_f=='+'?'+':''}} {{item.p_r}} </view>
+							  		<view class="" :class="Number( item.p_h)>0?'color94':'color43'"> {{item.p_f=='+'?'+':''}}{{ item.p_h}}% </view>
 							  	</view>
 							  </view>
 							<!-- 	<view class="dis_row_2" v-if="index==0"> 
@@ -121,6 +122,7 @@
 	}
 	.dis_row_1{
 		flex: 1;
+		font-size: 1vw;
 	}
 	.dis_row_2{
 		width: 100px;
@@ -161,6 +163,8 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
+			font-size: 12px;
+			justify-content: space-between;
 		}
 	}
 
@@ -181,7 +185,7 @@
 			align-items: center;
 
 			.tabTopItem {
-				margin: 10px 8px 10px 8px;
+				margin: 10px 4px 10px 4px;
 				border-radius: 20upx;
 				    box-shadow: #ccc 0px 0px 10px 0px !important;
 				text-align: center;

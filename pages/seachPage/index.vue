@@ -6,17 +6,19 @@
 				<view class="drawJt"> </view>
 			</view>
 			<view class="searchListRowlists">
-				<u-input   prefixIcon="search" placeholder="Search"   border="surround" v-model="keyword" class="searchListRowRight bg88"
-					   ></u-input>
-				<button @click="onChangeInput" class="u-button-right content" type="primary" >Search</button>
+				<u-search :showAction="true"  v-model="keyword"  color="#333333" actionText="Go" :actionStyle='actionStyles' searchIconSize="red" @custom='onChangeInput' :animation="true"></u-search>
+			<!-- 	<u-input   prefixIcon="search" placeholder="Search"   border="surround" v-model="keyword" class="searchListRowRight bg88"
+					   ></u-input> -->
+				<!-- <button @click="onChangeInput" class="u-button-right content" type="primary" >Search</button> -->
 			</view>
 			 
 		</view>
-		<view class="textColorFFF marTop50"> 
+		 	 
+		<view class="textColorFFF marTop20"> 
 			<view class="">
-				<view class="textColorFFF bg201c35 fontSize15">
+				<!-- <view class="textColorFFF bg201c35 fontSize15">
 					Hot stock
-				</view>
+				</view> -->
 				<view class="searchListRowList searchListRow" @click="jumpToDetail(item)"
 					v-for="(item,index) in noauthstockMostFive" :key="index">
 					<view class="searchListRowListTitle ">
@@ -24,7 +26,13 @@
 						<view class="color88 fontSize12 bjt">{{item.name}}</view>
 					</view>
 					<view class="color94 fontSize12 bjt" v-if='item.price'>
-						  {{item.price}}
+						   <view class="textColorFFF">
+						   	{{item.price}}
+						   </view>
+						  <view class=""  :class="Number(item.changesPercentage)>0?'color94':'color43'">
+						     	{{item.changesPercentage.toFixed(2)}}%
+						  </view>
+						  
 					</view>
 				</view>
 			</view>
@@ -45,7 +53,10 @@
 			return {
 				keyword: "",
 				bgColor: '#001f3f',
-				noauthstockMostFive: []
+				noauthstockMostFive: [],
+				actionStyles:{
+					color:'#999'
+				}
 			}
 
 		},
@@ -138,7 +149,7 @@
 		align-items: center;
 		justify-content: space-between;
 		border-radius: 5px; 
-		background-color: #7b7888!important;
+		/* background-color: #7b7888!important; */
 		flex: 1;
 	}
 
@@ -165,15 +176,12 @@
 	.searchListRowRight {
 		flex: 1;
 		/* border: 1px solid #fff; */
-		height: 70upx;
+		height: 60upx;
 		 
 		font-size: 28upx;
 	}
 
-	/deep/ .uni-input-input {
-
-		color: #fff;
-	}
+ 
 
 	.u-button-right{
 		width: 160upx;
@@ -190,18 +198,18 @@
 
 	.drawJt {
 		border: 4rpx solid #c2c0c0;
-		width: 30rpx;
-		height: 30rpx;
+		width: 26rpx;
+		height: 26rpx;
 		border-left-color: transparent;
 		border-top-color: transparent;
-		transform: rotate(135deg); //左箭头
+		transform: rotate(135deg); 
 		margin: 0 auto;
-		margin-top: 20rpx;
+		/* margin-top: 20rpx; */
 	}
-	/deep/ .uni-input-input{
-		background-color: #7b7888!important;
-		border: none;
-		outline: none;
+	/deep/ .uni-input-input{ 
+ /* 	background-color: #7b7888!important;
+		border: none; */
+		outline: #333333!important;
 	}
 	 .searchListRowlists .u-input--border{
 			border-color: #7b7888!important;

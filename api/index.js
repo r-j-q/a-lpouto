@@ -31,7 +31,7 @@ export const noauthNews = "/noauth/news"
 export const stockHistory = "/user/stock/history"
 export const stockIndex = "/noauth/stock/index"
 export const noauthStockIndex = "/noauth/stock/base"
-export const noauthStockWeek = "/noauth/stock/week"
+export const noauthStockWeek = "/user/stock/base"
 // http://api.stock-plouto.com/noauth/stock/week?symbol=AAPL
 
 export const noauthNewsdetail = "/noauth/news/detail"

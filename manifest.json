@@ -189,11 +189,11 @@
 //     }
 // }
 {
-    "name" : "stock plouto",
+    "name" : "Stock-Plouto",
     "appid" : "__UNI__EA07A9A",
-    "description" : "pluto change the future",
-    "versionName" : "1.0.1",
-    "versionCode" : 101,
+    "description" : "plouto change the future",
+    "versionName" : "1.0.9",
+    "versionCode" : 109,
     "transformPx" : false,
     "app-plus" : {
         "background" : "#191224",

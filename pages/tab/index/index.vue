@@ -13,7 +13,7 @@
             transform: 'scale(1.2)'
         }" :list="marhetList" @click="handleMarhetList"></u-tabs> -->
  
-		<view class="marketCountStyle" v-if='marketCount===0'>
+		<view class="marketCountStyle" v-if='marketCount==0'>
 			<view class="">
 				<index-echarts   :tabTopList="listArr" />
 			<!-- 	<index-echarts :dateDJI="dateDJI" :dateIXIC="dateIXIC" :dateGSPC="dateGSPC" :dataGSPC="dataGSPC"
@@ -37,7 +37,7 @@
 			</view>
 		</view>
 		 
-		<view class="marketCountStyle" v-if='marketCount===1'>
+		<view class="marketCountStyle" v-if='marketCount==1'>
 			<view class="mostList2 bg35" v-for="(fa,i) in mostListArrAddStock" :key="i">
 				<!-- <view class="bg35 mostListTitle1 textColorFFF fontSize28 fontWeight">
 					 {{items.title}}
@@ -54,17 +54,15 @@
 				 
 			</view>
 			<view class="marketCountStyleTwo textColorFFF" @click.stop="addGoods">
-				+ Add
+				+ 
 			</view>
 
-		</view>
-		<!-- :bgImage="upd" -->
+		</view> 
 	 <!-- 386994742353989  1631471618-->
-	 
-         
-        <wrap-version-update ref="updateRef" :bgImage="upd" id="386994742353989" @check="onHandleCheck"
-			@error="onHandleError" @finish="onHandleFinish">
-		</wrap-version-update>
+	<!-- #ifdef APP-PLUS -->
+         <wrap-version-update :bgImage="upd"  id="386994742353989" ></wrap-version-update>
+    <!-- #endif -->
+       
 	  
 		<!-- <button type="default">{{release.version}}</button> -->
 
@@ -263,7 +261,7 @@
 				}, {
 					name: '+Add Stock',
 					id: 2
-				}],
+				}], 
 				list4: [{
 					url: 'https://cdn.uviewui.com/uview/resources/video.mp4',
 					title: '昨夜星辰昨夜风，画楼西畔桂堂东',
@@ -305,15 +303,33 @@
 		 
 			let _this = this; 
 			// _this.getStockList();
-			_this.getStockIndex();
+			_this.marketCount=0;
+			_this.getStockIndex();  
 			// _this.getStockBaseList("^GSPC")
 			// _this.getStockBaseList("^DJI")
 			// _this.getStockBaseList("^IXIC")
-			_this.getNoauthstockMost("actives")
-			_this.getNoauthstockMost("losers")
-			_this.getNoauthstockMost("gainers")
-		 
-
+			try{
+			let valueList = uni.getStorageSync("mostList");
+			if(valueList.length>0){
+				_this.mostListArr = JSON.parse(valueList);
+			}else{
+				_this.getNoauthstockMost("actives")
+				_this.getNoauthstockMost("losers")
+				_this.getNoauthstockMost("gainers")
+			}
+				 
+			}catch(e){ 
+			}
+			 
+			 
+			
+			 // _this.getNoauthstockMost("actives")
+			 // _this.getNoauthstockMost("losers")
+			 // _this.getNoauthstockMost("gainers")
+			 
+			// 有缓存加载缓存数据，没缓存请求接口数据
+			 
+		    // _this.getUserstockList()
 		},
 		mounted() {},
 
@@ -381,6 +397,7 @@
 						res => {
 							  
 							if(v=='actives') {
+							
 								this.resListactives =res.list 
 							}
 							if(v=='losers') {
@@ -394,20 +411,31 @@
 								// ...this.resListlosers, 
 								// ...this.resListgainers, 
 							 // ] 
-							this.mostListArr = [
-								{
-								title:"Most Active",
-								list:this.resListactives
-							   },
-							   {
-								title:"Most Loser",
-								list:this.resListlosers
-							   },
-							   {
-								title:"Most Gainer",
-								list:this.resListgainers
-							   }];
-						 
+							 
+					 
+				    let psp =[
+							 	{
+							 	title:"Most Active",
+							 	list:this.resListactives
+							    },
+							    {
+							 	title:"Most Loser",
+							 	list:this.resListlosers
+							    },
+							    {
+							 	title:"Most Gainer",
+							 	list:this.resListgainers
+							    }]  
+							 
+							this.mostListArr = psp;
+								let psps =JSON.stringify(psp)
+								  try{
+								  	uni.setStorageSync('mostList',  psps );
+								  							 
+								  }catch(e){
+								  	//TODO handle the exception
+								  }
+							  
 							// console.log("--res getNoauthstockMost------------>", this.mostListArr)
 						},
 
@@ -478,18 +506,19 @@
 						res => {
 							let arr = []
 							res.list.forEach((item) => {
-								if (item.symbol === "^GSPC" || item.symbol === "^IXIC" || item.symbol === "^DJI") {
+								if (item.symbol == "^GSPC" || item.symbol == "^IXIC" || item.symbol == "^DJI") {
 									item.p_r = (item.price - item.previousClose).toFixed(2);
 									item.p_f = item.price - item.previousClose < 0 ? "-" : "+";
 									item.p_h = (((item.price - item.previousClose) / item.previousClose) * 100)
 										.toFixed(2);
+										
 									arr.push(item)
 
 
 								}
 							})
 							this.listArr = arr;
-							console.log("--21--->", this.listArr)
+							// console.log("--21--->", this.listArr)
 						}
 					)
 			},
@@ -634,21 +663,16 @@
 			gotoHandle(index) {
 				console.log(index, 'index')
 			},
-			onHandleCheck(res) {
+			HandleCheck(res) {
 				this.release = res;
 
 				console.log("handleCheck", e);
 			},
-			onHandleError(e) {
+			HandleError(e) {
 				console.log("handleError", e);
 			},
-			onHandleFinish(e) {
-				if (!res.isTest) {
-					uni.showToast({
-						title: 'End Update',
-						icon: 'none'
-					});
-				}
+			HandleFinish(e) {
+			 
 			},
 			scrolltoupper() {},
 			handleStockList(item, index) {
@@ -849,15 +873,20 @@
 	width: 100%;
 }
 	.marketCountStyleTwo {
-		width: 50%;
-		margin: 0 auto;
-		padding: 20upx 0;
-		border: 1px solid #fff;
-		margin-top: 30%;
-		text-align: center;
-		border-radius: 10upx;
-		font-size: 24px;
+		width: 100upx;
+		height: 100upx;
+		line-height: 100upx;
+		border-radius: 50upx;
+		 
+		text-align: center; 
+		font-size: 24px; 
+		position: fixed;
+		bottom: 160upx;
+		right: 40upx; 
+		background-color: #4ca594;
+		opacity: .7;
 	}
+	 
 	/* /deep/ .u-scroll-view{
 		background-color: #191428;
 	} */
@@ -990,5 +1019,8 @@
 	}
 	.fontSizeB1{
 		font-size: 26upx;
+	}
+	.mostListRow:nth-child(6){
+		border-bottom: none;
 	}
 </style>

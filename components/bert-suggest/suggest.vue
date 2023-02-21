@@ -17,12 +17,13 @@
 		<uni-card class="box" :isFull="true" title="联系方式" :thumbnail="contactIcon">
 			<input v-model="data.contact" placeholder="手机 QQ或e-mail,方便我们联系您" />
 		</uni-card> -->
-		<button class="submit-btn" @click="submit">Submit</button>
+		<button class="submit-btn" :class="isDisabled==true ?'bacc':''" :disabled="isDisabled" @click="submit">Submit</button>
 	</view>
 </template>
 
 <script>
 	export default {
+		props:['isDisabled'],
 		data() {
 			return {
 				data: {
@@ -71,6 +72,9 @@
 	}
 	.textarea_{
 		margin-top: 60upx;
+	}
+	.bacc{
+		background-color: #999;
 	}
 	textarea{
 		width: 90%;

@@ -164,100 +164,79 @@
 				for (i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
 				return n
 			},
-			paymentGoogle() {
+	// 		paymentGoogle() {
 
-				plus.payment.getChannels((providers) => {
-					var randomData = this.randomString(32);
-					var totalPrice = "1.00";
-					var environment = 1; // 必填 1 是product  3是test
-					let provider = providers.find(function(e) {
-						return e.id === "google-pay";
-					});
+	// 			plus.payment.getChannels((providers) => {
+	// 				var randomData = this.randomString(32);
+	// 				var totalPrice = "1.00";
+	// 				var environment = 1; // 必填 1 是product  3是test
+	// 				let provider = providers.find(function(e) {
+	// 					return e.id === "google-pay";
+	// 				});
 
-					let paymentMethodType = "CARD";
+	// 				let paymentMethodType = "CARD";
 
-					let cardPaymentMethodConfig = {
-						environment: environment, // 必填 1 是product  3是test
-						paymentMethodType: paymentMethodType, //必填 CARD、PAYPAL
-						existingPaymentMethodRequired: false, //可选 如果设置为true同时已经准备好了支付allowedPaymentMethods中的付款方式，isReadyToPay就会返回true。
-						currencyCode: "USD", //必填
-						countryCode: "US", //在欧洲经济区必填
-						transactionId: randomData, //当你想要接收googlepay回调的时候必填
-						totalPriceStatus: "FINAL", //必填  NOT_CURRENTLY_KNOWN、ESTIMATED、FINAL
-						totalPrice: totalPrice, //必填 满足正则格式^[0-9]+(\.[0-9][0-9])?$
-						// totalPriceLabel: "100heelo", //可选
-						checkoutOption: "DEFAULT", //可选 DEFAULT、COMPLETE_IMMEDIATE_PURCHASE
-						// merchantName: "Example Merchant", //可选
-						emailRequired: true, //可选
-						shippingAddressRequired: true, //可选
-						shippingPhoneNumberRequired: false, //可选
-						allowedCountryCodes: ["US", "GB"], //可选
-						allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"], //必填
-						allowedCardNetworks: ["AMEX", "DISCOVER", "JCB", "MASTERCARD", "VISA"], //必填
-						allowPrepaidCards: false, //可选
-						// allowCreditCards:false,//可选  
-						assuranceDetailsRequired: false, //可选
-						billingAddressRequired: true, //可选
-						billingAddressParametersFormat: "FULL", //可选 MIN
-						phoneNumberRequired: false, //可选
-						tokenizationSpecificationType: "DIRECT", //必填 PAYMENT_GATEWAY、DIRECT
-						gateway: "", //PAYMENT_GATEWAY时必填
-						gatewayMerchantId: "", //PAYMENT_GATEWAY时必填
-						protocolVersion: "ECv2", //DIRECT时必填
-						publicKey: "BBRljhN6F6IO86baW7JZKbOLW8Em0TGMaidIva/U+e8qefYnMX8Pu5H6EILv+aJJHzgG+WLnlKHgkF0bJjJCUuQ=", //DIRECT时必填
-						buildTokenizationSpecification: { //可选，此字段是为了方便开发者自定义构造tokenizationSpecification参数,设置此字段时，会覆盖掉`tokenizationSpecificationType`、`gateway`、`gatewayMerchantId`、`protocolVersion`、`publicKey`字段。(HBuilderX 3.5.1+支持)
-							"type": "PAYMENT_GATEWAY",
-							"parameters": {
-								"gateway": "custom-gateway",
-								"gatewayMerchantId": "mock-gatewayMerchantId"
-							}
-						}
-					};
+	// 				let cardPaymentMethodConfig = {
+	// 					environment: environment, // 必填 1 是product  3是test
+	// 					paymentMethodType: paymentMethodType, //必填 CARD、PAYPAL
+	// 					existingPaymentMethodRequired: false, //可选 如果设置为true同时已经准备好了支付allowedPaymentMethods中的付款方式，isReadyToPay就会返回true。
+	// 					currencyCode: "USD", //必填
+	// 					countryCode: "US", //在欧洲经济区必填
+	// 					transactionId: randomData, //当你想要接收googlepay回调的时候必填
+	// 					totalPriceStatus: "FINAL", //必填  NOT_CURRENTLY_KNOWN、ESTIMATED、FINAL
+	// 					totalPrice: totalPrice, //必填 满足正则格式^[0-9]+(\.[0-9][0-9])?$
+	// 					// totalPriceLabel: "100heelo", //可选
+	// 					checkoutOption: "DEFAULT", //可选 DEFAULT、COMPLETE_IMMEDIATE_PURCHASE
+	// 					// merchantName: "Example Merchant", //可选
+	// 					emailRequired: true, //可选
+	// 					shippingAddressRequired: true, //可选
+	// 					shippingPhoneNumberRequired: false, //可选
+	// 					allowedCountryCodes: ["US", "GB"], //可选
+	// 					allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"], //必填
+	// 					allowedCardNetworks: ["AMEX", "DISCOVER", "JCB", "MASTERCARD", "VISA"], //必填
+	// 					allowPrepaidCards: false, //可选
+	// 					// allowCreditCards:false,//可选  
+	// 					assuranceDetailsRequired: false, //可选
+	// 					billingAddressRequired: true, //可选
+	// 					billingAddressParametersFormat: "FULL", //可选 MIN
+	// 					phoneNumberRequired: false, //可选
+	// 					tokenizationSpecificationType: "DIRECT", //必填 PAYMENT_GATEWAY、DIRECT
+	// 					gateway: "", //PAYMENT_GATEWAY时必填
+	// 					gatewayMerchantId: "", //PAYMENT_GATEWAY时必填
+	// 					protocolVersion: "ECv2", //DIRECT时必填
+	// 					publicKey: "BBRljhN6F6IO86baW7JZKbOLW8Em0TGMaidIva/U+e8qefYnMX8Pu5H6EILv+aJJHzgG+WLnlKHgkF0bJjJCUuQ=", //DIRECT时必填
+	// 					buildTokenizationSpecification: { //可选，此字段是为了方便开发者自定义构造tokenizationSpecification参数,设置此字段时，会覆盖掉`tokenizationSpecificationType`、`gateway`、`gatewayMerchantId`、`protocolVersion`、`publicKey`字段。(HBuilderX 3.5.1+支持)
+	// 						"type": "PAYMENT_GATEWAY",
+	// 						"parameters": {
+	// 							"gateway": "custom-gateway",
+	// 							"gatewayMerchantId": "mock-gatewayMerchantId"
+	// 						}
+	// 					}
+	// 				};
+ 
 
-					// https://ext.dcloud.net.cn/plugin?id=4677
-					// 					let paypalPaymentMethodConfig = {
-					// 						environment: environment, // 必填 1 是product  3是test
-					// 						paymentMethodType: paymentMethodType, //必填 CARD、PAYPAL
-					// 						existingPaymentMethodRequired: false, //可选 如果设置为true同时已经准备好了支付allowedPaymentMethods中的付款方式，isReadyToPay就会返回true。
+	// 				let statement;
 
-					// 						currencyCode: "USD", //必填
-					// 						countryCode: "US", //在欧洲经济区必填
-					// 						transactionId: transactionId, //当你想要接收googlepay回调的时候必填
-					// 						totalPriceStatus: "FINAL", //必填  NOT_CURRENTLY_KNOWN、ESTIMATED、FINAL
-					// 						totalPrice: totalPrice, //必填 满足正则格式^[0-9]+(\.[0-9][0-9])?$
-					// 						// totalPriceLabel: "100heelo", //可选
-					// 						checkoutOption: "DEFAULT", //可选 DEFAULT、COMPLETE_IMMEDIATE_PURCHASE
+	// 				if (paymentMethodType === "CARD") {
+	// 					statement = {
+	// 						...cardPaymentMethodConfig
+	// 					};
+	// 				} else {
+	// 					// statement = {
+	// 					// 	...paypalPaymentMethodConfig
+	// 					// };
+	// 				}
 
-					// 						// merchantName: "Example Merchant", //可选
-					// 						emailRequired: true, //可选
-					// 						shippingAddressRequired: true, //可选
-					// 						shippingPhoneNumberRequired: false, //可选
-					// 						allowedCountryCodes: ["US", "GB"], //可选
-					// 						merchantId: "MVHSBANAS6KSE", //必填
-					// 					};
+	// 				console.log(JSON.stringify(statement));
 
-					let statement;
+	// 				plus.payment.request(provider, statement, (result) => {
+	// 					console.log("支付成功 :" + JSON.stringify(result));
+	// 				}, (e) => {
+	// 					console.log("支付失败： " + JSON.stringify(e));
+	// 				})
+	// 			});
 
-					if (paymentMethodType === "CARD") {
-						statement = {
-							...cardPaymentMethodConfig
-						};
-					} else {
-						// statement = {
-						// 	...paypalPaymentMethodConfig
-						// };
-					}
-
-					console.log(JSON.stringify(statement));
-
-					plus.payment.request(provider, statement, (result) => {
-						console.log("支付成功 :" + JSON.stringify(result));
-					}, (e) => {
-						console.log("支付失败： " + JSON.stringify(e));
-					})
-				});
-
-			},
+	// 		},
 			// ...mapMutations(['getUseriInfo', 'login', 'getUIStyle']),
 			// isIos() {
 			// 	return systemInfo.platform === 'android' ? false : true;
@@ -470,7 +449,7 @@
 	/* #ifndef APP-NVUE */
 	@import "uview-ui/index.scss";
 	@import url("@/static/css/index.css");
-    page {
+    page {   
 		background-color: #191428;
 	}
 /* #endif */

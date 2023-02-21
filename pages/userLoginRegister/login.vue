@@ -235,7 +235,7 @@
 					})
 					return 
 				}			 
-
+                // _this.disabled= true;
 				_this.$request
 					.post({
 						url: login,
@@ -249,6 +249,7 @@
 								url: '/pages/tab/index/index',
 								animationType: "fade-in",
 							})
+							// _this.disabled= false;
 						},
 						res => {
                         uni.showToast({

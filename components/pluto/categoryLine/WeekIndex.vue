@@ -23,7 +23,7 @@
 	} from '@/api/index.js'
 	export default {
 		name: "categoryLine",
-		props: ['stock_no', 'qUrl'],
+		props: ['stock_no', 'qUrl','time_type'],
 
 		components: {
 			echarts
@@ -74,7 +74,7 @@
 		},
 
 		watch: {
-			qUrl(newV, oldV) {
+			time_type(newV, oldV) {
 				console.log("---newVnewV----->", newV)
 				this.getStockBaseList(newV)
 			}
@@ -137,7 +137,7 @@
 			getStockBaseList(v) {
 
 				var res = this.$request.get({
-						url: `${v}?stock_no=${this.stock_no}`,
+						url: `${v}?stock_no=${this.stock_no}&time_type=${this.time_type}`,
 						loadingTip: 'stock...'
 					})
 					.then(
@@ -153,21 +153,23 @@
 									month = "",
 									day = "";
 								year = item.date.toString().slice(0, 4);
-								month = item.date.toString().slice(4, 6);
-								day = item.date.toString().slice(6, 8);
+								month = item.date.toString().slice(6, 7);
+								day = item.date.toString().slice(9, 10);
 								this.newBaseData.push(
 									// [item.Date, item.Open, item.Close, item.Low, item.High]
 									[`${year}/${month}/${day}`, item.open.toFixed(2), item.close.toFixed(
 										2), item.low.toFixed(2), item.high.toFixed(2), item.riseAndFall, item.riseAndChg]
 								)
 							}) 
-							console.log("newBaseData>", this.newBaseData)
+							console.log("dateAllPorint>", this.dateAllPorint)
 							// [date,open,close,low,high] 
 							this.data0 = this.splitDataNew(this.newBaseData)
 							this.dataWR1 = this.calculateMAWR1(32);
 							this.dataWR2 = this.calculateMAWR1(64);
+							
 							this.myRadarEcharts();
 							this.chartData = {
+								
 								line1: this.resultPorint32,
 								line2: this.resultPorint64,
 								date: this.dateAllPorint

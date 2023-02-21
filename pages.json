@@ -498,7 +498,7 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "Plouto",
 		"navigationBarBackgroundColor": "#191428",
-		"backgroundColor": "#F5F5F5",
+		"backgroundColor": "#191428",
 		"onReachBottomDistance": 10,
 		"rpxCalcMaxDeviceWidth": 1024,
 		"rpxCalcBaseDeviceWidth": 375,

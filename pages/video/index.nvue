@@ -41,7 +41,7 @@
 					</div>
 				</div>
 
-				<div class="bottomMask" v-if="playIndex!=idx||timeMask"></div>
+				<!-- <div class="bottomMask" v-if="playIndex!=idx||timeMask"></div> -->
 
 			</div>
 		</div>
