@@ -2,68 +2,72 @@
 	<view class="content content_app_style_content">
 		<!-- <button @click="get_google">测试支付</button> -->
 		<!-- <list-stock :listArr="listArr"/> -->
-		
-		 <u-sticky bgColor="#191428">
-		 <!-- https://ext.dcloud.net.cn/plugin?id=1971 地址 -->
-		 <v-tabs v-model="marketCount"   height="100rpx" color="#999" activeColor="#4ca594" lineColor="#4ca594" bgColor="#191428" :tabs="marhetList2" @change="handleMarhetList"></v-tabs>
-		  </u-sticky>
-        <!-- <u-tabs lineColor="#4ca594" :activeStyle="{
+
+		<u-sticky bgColor="#191428">
+			<!-- https://ext.dcloud.net.cn/plugin?id=1971 地址 -->
+			<v-tabs v-model="marketCount" height="100rpx" color="#999" activeColor="#4ca594" lineColor="#4ca594"
+				bgColor="#191428" :tabs="marhetList2" @change="handleMarhetList"></v-tabs>
+		</u-sticky>
+		<!-- <u-tabs lineColor="#4ca594" :activeStyle="{
             color: '#4ca594',
             fontWeight: 'bold',
             transform: 'scale(1.2)'
         }" :list="marhetList" @click="handleMarhetList"></u-tabs> -->
- 
+
 		<view class="marketCountStyle" v-if='marketCount==0'>
 			<view class="">
-				<index-echarts   :tabTopList="listArr" />
-			<!-- 	<index-echarts :dateDJI="dateDJI" :dateIXIC="dateIXIC" :dateGSPC="dateGSPC" :dataGSPC="dataGSPC"
+				<index-echarts :tabTopList="listArr" />
+				<!-- 	<index-echarts :dateDJI="dateDJI" :dateIXIC="dateIXIC" :dateGSPC="dateGSPC" :dataGSPC="dataGSPC"
 					:dataIXIC="dataIXIC" :dataDJI="dataDJI" :tabTopList="listArr" /> -->
 			</view>
-			<view class="mostList bg35"  v-for="(items,index) in mostListArr" :key="index">
+			<view class="mostList bg35" v-for="(items,index) in mostListArr" :key="index">
 				<view class="bg35 mostListTitle1 textColorFFF fontSize28 fontWeight">
-					  <view>{{items.title}}</view>
-					  <view class="textColorFFF" @click="jumpToDetailMost(items.title,index)">more</view>
+					<view>{{items.title}}</view>
+					<view class="textColorFFF" @click="jumpToDetailMost(items.title,index)">more</view>
 				</view>
-				<view class="mostListRow bg35" @click.stop="jumpToDetail(ite)"  v-if="i<5"  v-for="(ite,i) in items.list" :key="i" >
+				<view class="mostListRow bg35" @click.stop="jumpToDetail(ite)" v-if="i<5" v-for="(ite,i) in items.list"
+					:key="i">
 					<view class="textColorFFF fontSize15 bg35 paddingAll mostList100">
 						<view class="mostListRowList bg35">
-							<view class="bg35 fontSizeB1">	{{ite.symbol}}</view>
+							<view class="bg35 fontSizeB1"> {{ite.symbol}}</view>
 							<view class="bg35 fontSizeB1">{{ite.price}}</view>
-							<view class="bg35 fontSizeB1" :class="ite.changesPercentage>0?'color94':'color43'">{{ite.changesPercentage.toFixed(2)}}%</view>
+							<view class="bg35 fontSizeB1" :class="ite.changesPercentage>0?'color94':'color43'">
+								{{ite.changesPercentage.toFixed(2)}}%</view>
 						</view>
-					</view> 
+					</view>
 				</view>
-				 
+
 			</view>
 		</view>
-		 
+
 		<view class="marketCountStyle" v-if='marketCount==1'>
 			<view class="mostList2 bg35" v-for="(fa,i) in mostListArrAddStock" :key="i">
 				<!-- <view class="bg35 mostListTitle1 textColorFFF fontSize28 fontWeight">
 					 {{items.title}}
 				</view> -->
-				<view class="mostListRow2 bg35" @click.stop="jumpToDetail(fa)" >
+				<view class="mostListRow2 bg35" @click.stop="jumpToDetail(fa)">
 					<view class="textColorFFF fontSize15 bg35 paddingAll mostList100">
 						<view class="mostListRowList bg35">
-							<view class="bg35 fontSizeB1">	{{fa.symbol}}</view>
+							<view class="bg35 fontSizeB1"> {{fa.symbol}}</view>
 							<view class="bg35 fontSizeB1">{{fa.price}}</view>
-							<view class="bg35 fontSizeB1" :class="Number(fa.changesPercentage)>0?'color94':'color43'">{{fa.changesPercentage}}%</view>
+							<view class="bg35 fontSizeB1" :class="Number(fa.changesPercentage)>0?'color94':'color43'">
+								{{fa.changesPercentage}}%</view>
 						</view>
-					</view> 
+					</view>
 				</view>
-				 
+
 			</view>
 			<view class="marketCountStyleTwo textColorFFF" @click.stop="addGoods">
-				+ 
+				+
 			</view>
 
-		</view> 
-	 <!-- 386994742353989  1631471618-->
-	<!-- #ifdef APP-PLUS -->
-         <wrap-version-update :bgImage="upd"  id="386994742353989" ></wrap-version-update>
-    <!-- #endif -->
-       
-	  
+		</view>
+		<!-- 386994742353989  1631471618-->
+		<!-- #ifdef APP-PLUS -->
+		<wrap-version-update :bgImage="upd" id="386994742353989"></wrap-version-update>
+		<!-- #endif -->
+
+
 		<!-- <button type="default">{{release.version}}</button> -->
 
 		<!-- <view class="brand">
@@ -249,10 +253,10 @@
 		},
 		data() {
 			return {
-				marhetList2:[
-					  'Markets',  'Watchlist'
-						 
-				 
+				marhetList2: [
+					'Markets', 'Watchlist'
+
+
 				],
 				marketCount: 0,
 				marhetList: [{
@@ -261,7 +265,7 @@
 				}, {
 					name: '+Add Stock',
 					id: 2
-				}], 
+				}],
 				list4: [{
 					url: 'https://cdn.uviewui.com/uview/resources/video.mp4',
 					title: '昨夜星辰昨夜风，画楼西畔桂堂东',
@@ -291,51 +295,62 @@
 				upd: require("../../../static/images/upd.jpg"),
 				other: require("../../../static/images/other/like.png"),
 				bannerOne: require("../../../static/images/other/bannerOne.png"),
-				mostListArr:[],
-				resListactives:[],
-				resListlosers:[],
-				resListgainers:[],
-				mostListArrAddStock:[]
+				mostListArr: [],
+				resListactives: [],
+				resListlosers: [],
+				resListgainers: [],
+				mostListArrAddStock: []
 			};
 		},
-		watch: {},
-		onShow() {
-		 
-			let _this = this; 
+		onLoad() {
+			let _this = this;
 			// _this.getStockList();
-			_this.marketCount=0;
-			_this.getStockIndex();  
+			_this.marketCount = 0;
+			_this.getStockIndex();
 			// _this.getStockBaseList("^GSPC")
 			// _this.getStockBaseList("^DJI")
 			// _this.getStockBaseList("^IXIC")
-			try{
-			let valueList = uni.getStorageSync("mostList");
-			if(valueList.length>0){
-				_this.mostListArr = JSON.parse(valueList);
-			}else{
-				_this.getNoauthstockMost("actives")
-				_this.getNoauthstockMost("losers")
-				_this.getNoauthstockMost("gainers")
-			}
-				 
-			}catch(e){ 
-			}
-			 
-			 
 			
-			 // _this.getNoauthstockMost("actives")
-			 // _this.getNoauthstockMost("losers")
-			 // _this.getNoauthstockMost("gainers")
-			 
-			// 有缓存加载缓存数据，没缓存请求接口数据
-			 
-		    // _this.getUserstockList()
+			_this.getNoauthstockMost("actives")
+			_this.getNoauthstockMost("losers")
+			_this.getNoauthstockMost("gainers")
+			// try {
+			// 	let valueList = uni.getStorageSync("mostList");
+			// 	if (valueList.length > 0) {
+			// 		_this.mostListArr = JSON.parse(valueList);
+			// 	} else {
+			// 		_this.getNoauthstockMost("actives")
+			// 		_this.getNoauthstockMost("losers")
+			// 		_this.getNoauthstockMost("gainers")
+			// 	}
+			
+			// } catch (e) {}
+			
 		},
-		mounted() {},
+		onShow() {
+
+			 
+
+
+			// _this.getNoauthstockMost("actives")
+			// _this.getNoauthstockMost("losers")
+			// _this.getNoauthstockMost("gainers")
+
+			// 有缓存加载缓存数据，没缓存请求接口数据
+
+			// _this.getUserstockList()
+		},
+		 
 
 		methods: {
-			jumpToDetailMost(item,index){
-				let params={
+			jumpToDetailMost(item, index) {
+				if (!this.userInfo) {
+					uni.navigateTo({
+						url: "/pages/userLoginRegister/login"
+					})
+					return
+				}
+				let params = {
 					item,
 					index
 				}
@@ -345,6 +360,14 @@
 				})
 			},
 			jumpToDetail(item) {
+
+				if (!this.userInfo) {
+					uni.navigateTo({
+						url: "/pages/userLoginRegister/login"
+					})
+					return
+				}
+
 				let params = {
 					item
 				}
@@ -355,99 +378,101 @@
 				console.log("jumpToDetail", item)
 			},
 			//获取自选股列表 userstockList
-			getUserstockList(){
-				 this.mostListArrAddStock=[]
+			getUserstockList() {
+				this.mostListArrAddStock = []
 				var res = this.$request.get({
 						url: `${userstockList}`,
 						loadingTip: 'more...'
 					})
 					.then(
 						res => {
-							let {list,market} =res;
-							list.forEach((item,index)=>{
-								market.forEach((items,index)=>{
-									if(item.symbol===items.symbol){ 
-									this.mostListArrAddStock.push(
-									{
-										price:items.price,
-										changesPercentage:items.changesPercentage.toFixed(2),
-										symbol:items.symbol,
-										ID:item.ID,
-										
+							let {
+								list,
+								market
+							} = res;
+							list.forEach((item, index) => {
+								market.forEach((items, index) => {
+									if (item.symbol === items.symbol) {
+										this.mostListArrAddStock.push({
+											price: items.price,
+											changesPercentage: items.changesPercentage.toFixed(2),
+											symbol: items.symbol,
+											ID: item.ID,
+
+										})
 									}
-									)}
 									// item.price= items.price;
 									// item.changesPercentage= items.changesPercentage.toFixed(2);
 								})
 							})
-							 
+
 							// this.mostListArr=list
-							 console.log("--123-2---------->", this.mostListArr) 
+							console.log("--123-2---------->", this.mostListArr)
 						},
-				
+
 					)
 			},
 			getNoauthstockMost(v) {
-				this.mostListArr=[]
+				this.mostListArr = []
 				var res = this.$request.get({
 						url: `${noauthstockMost}?listtype=${v}`,
 						loadingTip: 'more...'
 					})
 					.then(
 						res => {
-							  
-							if(v=='actives') {
-							
-								this.resListactives =res.list 
+
+							if (v == 'actives') {
+
+								this.resListactives = res.list
 							}
-							if(v=='losers') {
-								this.resListlosers =res.list
+							if (v == 'losers') {
+								this.resListlosers = res.list
 							}
-							if(v=='gainers') {
-							this.resListgainers=res.list
-							} 
-							 // this.mostListArr=[
-								// ...this.resListactives, 
-								// ...this.resListlosers, 
-								// ...this.resListgainers, 
-							 // ] 
-							 
-					 
-				    let psp =[
-							 	{
-							 	title:"Most Active",
-							 	list:this.resListactives
-							    },
-							    {
-							 	title:"Most Loser",
-							 	list:this.resListlosers
-							    },
-							    {
-							 	title:"Most Gainer",
-							 	list:this.resListgainers
-							    }]  
-							 
+							if (v == 'gainers') {
+								this.resListgainers = res.list
+							}
+							// this.mostListArr=[
+							// ...this.resListactives, 
+							// ...this.resListlosers, 
+							// ...this.resListgainers, 
+							// ] 
+
+
+							let psp = [{
+									title: "Most Active",
+									list: this.resListactives
+								},
+								{
+									title: "Most Loser",
+									list: this.resListlosers
+								},
+								{
+									title: "Most Gainer",
+									list: this.resListgainers
+								}
+							]
+
 							this.mostListArr = psp;
-								let psps =JSON.stringify(psp)
-								  try{
-								  	uni.setStorageSync('mostList',  psps );
-								  							 
-								  }catch(e){
-								  	//TODO handle the exception
-								  }
-							  
+							let psps = JSON.stringify(psp)
+							try {
+								uni.setStorageSync('mostList', psps);
+
+							} catch (e) {
+								//TODO handle the exception
+							}
+
 							// console.log("--res getNoauthstockMost------------>", this.mostListArr)
 						},
 
 					)
 			},
-		 
+
 			handleMarhetList(item) {
-				console.log("======>",item)
+				console.log("======>", item)
 				this.marketCount = item;
-				if(item==1){
-				    this.getUserstockList()
-				}else{
+				if (item == 1) {
+					this.getUserstockList()
+				} else {
 					this.getNoauthstockMost("actives")
 					this.getNoauthstockMost("losers")
 					this.getNoauthstockMost("gainers")
@@ -511,7 +536,7 @@
 									item.p_f = item.price - item.previousClose < 0 ? "-" : "+";
 									item.p_h = (((item.price - item.previousClose) / item.previousClose) * 100)
 										.toFixed(2);
-										
+
 									arr.push(item)
 
 
@@ -672,7 +697,7 @@
 				console.log("handleError", e);
 			},
 			HandleFinish(e) {
-			 
+
 			},
 			scrolltoupper() {},
 			handleStockList(item, index) {
@@ -780,7 +805,7 @@
 	};
 </script>
 <style scoped>
-	.mostListTitle1{
+	.mostListTitle1 {
 		/* border-left: 16upx solid #4ca594; */
 		/* border-radius: 10px; */
 		/* padding-left: 20upx; */
@@ -789,8 +814,9 @@
 		align-items: center;
 		justify-content: space-between;
 	}
+
 	.marketCountStyle {
-		width: 100%; 
+		width: 100%;
 	}
 
 	.lookMore {
@@ -815,9 +841,10 @@
 		padding: 20upx;
 		border-radius: 16upx;
 		border: 1upx solid #999;
-		 
+
 	}
-	.mostList2{
+
+	.mostList2 {
 		width: 94%;
 		margin: 0 auto;
 		display: flex;
@@ -827,6 +854,7 @@
 		padding: 20upx;
 		border-radius: 16upx;
 	}
+
 	.mostListRow2 {
 		width: 90%;
 		margin: 0 auto;
@@ -834,9 +862,10 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-		padding: 20upx 0; 
-		
+		padding: 20upx 0;
+
 	}
+
 	.mostListRow {
 		width: 90%;
 		margin: 0 auto;
@@ -846,7 +875,7 @@
 		justify-content: space-between;
 		padding: 20upx 0;
 		border-bottom: 1upx solid #999;
-		
+
 	}
 
 	.lookMoreVideo {
@@ -869,24 +898,26 @@
 		border: none;
 		object-position: center;
 	}
-.mostList100{
-	width: 100%;
-}
+
+	.mostList100 {
+		width: 100%;
+	}
+
 	.marketCountStyleTwo {
 		width: 100upx;
 		height: 100upx;
 		line-height: 100upx;
 		border-radius: 50upx;
-		 
-		text-align: center; 
-		font-size: 24px; 
+
+		text-align: center;
+		font-size: 24px;
 		position: fixed;
 		bottom: 160upx;
-		right: 40upx; 
+		right: 40upx;
 		background-color: #4ca594;
 		opacity: .7;
 	}
-	 
+
 	/* /deep/ .u-scroll-view{
 		background-color: #191428;
 	} */
@@ -1017,10 +1048,12 @@
 	.text-aligin-center {
 		text-align: center;
 	}
-	.fontSizeB1{
+
+	.fontSizeB1 {
 		font-size: 26upx;
 	}
-	.mostListRow:nth-child(6){
+
+	.mostListRow:nth-child(6) {
 		border-bottom: none;
 	}
 </style>

@@ -5,10 +5,11 @@
 			pillsColor="#fff" activeColor="#1296db" @change="changeTab"></v-tabs>
 		<view style="height: 5px;"></view>
 		<echartsT v-if="minHour==0" :option="option" style="height: 300px;" @click="echartsClick"></echartsT>
-		<CategoryLine v-if="minHour==1" :stock_no="stock_no" :qUrl="qUrl" />
+		<!-- <CategoryLine v-if="minHour==1" :stock_no="stock_no" :qUrl="qUrl" /> -->
+		<!-- <WeekIndex v-if="minHour==1" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
 		<WeekIndex v-if="minHour==2" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
 		<WeekIndex v-if="minHour==3" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
-		<WeekIndex v-if="minHour==4" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/>
+		<WeekIndex v-if="minHour==4" :stock_no="stock_no" :qUrl="qUrl"  :time_type="time_type_week"/> -->
 		<detail :titleList="titleList" />
 		<view class="paddingAll textColor" v-if="content" style="text-justify:newspaper;">
 			{{content}}
@@ -74,7 +75,7 @@
 					'30m',
 					'1h',
 					'4h',
-					'D',
+					// 'D',
 					// 'W',
 					// 'M',
 					// 'Y',
@@ -101,6 +102,7 @@
 		methods: {
 			// 千位符
 			  numFormat (num) {
+				
 			    num = num.toString().split('.')
 			    let arr = num[0].split('').reverse()
 			    var res = []
@@ -188,6 +190,12 @@
 
 			changeTab(index) {
 				console.log("=======>",index)
+				if(index==6){
+					self.time_type_week='1day'
+					self.minHour = 3
+					self.qUrl = stockBase
+					return
+				}
 				if(index <= 5){
 					self.minHour = 0;
 					if(index==4 || index ==5){
@@ -206,15 +214,15 @@
 					if(self.tabs[index] == "M"){
 						self.time_type_week='1month'
 						self.minHour = 3
-						self.qUrl = noauthStockWeek
+						self.qUrl = stockBase
 					}else if(self.tabs[index] == "Y"){
 						self.time_type_week='1year'
 						self.minHour = 4
-						self.qUrl = noauthStockWeek
+						self.qUrl = stockBase
 					} else if(self.tabs[index] == "W"){
 					self.time_type_week='1week'
 					self.minHour = 2
-					self.qUrl = noauthStockWeek
+					self.qUrl = stockBase
 					}
 					 
 					
@@ -316,6 +324,7 @@
 					.then(
 						res => {
 							let baseData = res.list;
+							 
 							baseData.forEach((item) => {
 								item.time = self.timeProcessing(item.date);
 								item.traNumber = "43300"
@@ -420,6 +429,7 @@
 					rangZoom.end = len;
 					rangZoom.start = 0;
 				}
+				console.log('==========>',timeData)
 				return {
 					timeData: timeData.reverse(),
 					curData: curData,
@@ -441,21 +451,21 @@
 					dataZoom: [
 					 
 						{
-							filterMode:'filter', //当前数据窗口外的数据被过滤掉来达到数据窗口缩放的效果 默认值filter
+							// filterMode:'filter', //当前数据窗口外的数据被过滤掉来达到数据窗口缩放的效果 默认值filter
 							   type: 'inside', 
-							show: true,
-							realtime: true,
+							// show: true,
+							// realtime: true,
 							   // zoomLock: true,
 							start: 70,
 							end: 100,
-							xAxisIndex: [0, 1]
+							// xAxisIndex: [0, 1]
 						},
 						{
 							type: 'inside',
-							realtime: true,
+							// realtime: true,
 							start: 70,
 							end: 100,
-							xAxisIndex: [0, 1]
+							// xAxisIndex: [0, 1]
 						},
 						
 					],
@@ -635,19 +645,19 @@
 							}
 						}
 					],
-					dataZoom: {
-						show: true,
-						type: 'slider',
-						startValue: data.rangZoom.start,
-						endValue: data.rangZoom.end,
-						zoomLock: false,
-						backgroundColor: "#D5E6F5",
-						borderColor: "none",
-						fillerColor: 'rgba(167,183,204,0.3)',
+					// dataZoom: {
+					// 	show: true,
+					// 	type: 'slider',
+					// 	startValue: data.rangZoom.start,
+					// 	endValue: data.rangZoom.end,
+					// 	zoomLock: false,
+					// 	backgroundColor: "#D5E6F5",
+					// 	borderColor: "none",
+					// 	fillerColor: 'rgba(167,183,204,0.3)',
 
-						moveOnMouseMove: true,
-						zoomOnMouseWheel: true,
-					},
+					// 	moveOnMouseMove: true,
+					// 	zoomOnMouseWheel: true,
+					// },
 					series: [{
 							name: 'Current price ',
 							type: 'line',

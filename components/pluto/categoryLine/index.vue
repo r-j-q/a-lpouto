@@ -121,7 +121,7 @@
 							this.historical = baseData;
 							// let baseData = datas.historical
 
-
+                           console.log('baseData--------》',baseData);
 							baseData.forEach((item) => {
 								this.newBaseData.push(
 									// [item.Date, item.Open, item.Close, item.Low, item.High]
@@ -129,10 +129,12 @@
 										2), item.Low.toFixed(2), item.High.toFixed(2)]
 								)
 							})
+							 
 							// [date,open,close,low,high] 
 							this.data0 = this.splitDataNew(this.newBaseData)
 							this.dataWR1 = this.calculateMAWR1(32);
 							this.dataWR2 = this.calculateMAWR1(64);
+							 console.log('this.data0=========>',this.data0);
 							this.myRadarEcharts();
 							this.chartData = {
 								line1: this.resultPorint32,
@@ -141,7 +143,7 @@
 								// date: this.data0.categoryData
 							}
 
-
+ 
 
 							// console.log("---32------>", this.dataWR1)
 							// console.log("---64------>", this.dataWR2)
@@ -224,8 +226,7 @@
 				for (var i = 0; i < rawData.length; i++) {
 					categoryData.push(rawData[i].splice(0, 1)[0]);
 					values.push(rawData[i]);
-				}
-				// console.log("=categoryData======>", categoryData)
+				} 
 				return {
 					categoryData: categoryData,
 					values: values
@@ -442,7 +443,7 @@
 					xAxis: [{
 							type: 'category',
 							data: this.data0.categoryData,
-							boundaryGap: false,
+							boundaryGap: true,
 							axisLine: {
 								onZero: false
 							},

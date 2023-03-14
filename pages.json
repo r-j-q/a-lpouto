@@ -85,6 +85,14 @@
 				"navigationBarBackgroundColor": "#191224",
 				"navigationBarTextStyle": "white"
 			}
+		}, {
+			"path": "pages/video/detail",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "Video",
+				"navigationBarBackgroundColor": "#191224",
+				"navigationBarTextStyle": "white"
+			}
 		}, 
 
 
